@@ -7,20 +7,30 @@
             <tr>
                 <th>Task title</th>
                 <th>
-                    <a asp-controller="Home" asp-action="Create"  class="btn btn-primary">Add task</a>
                 </th>
             </tr>
         </thead>
         <tbody>
             @foreach(var obj in Model){
-                <tr id="task_id1">
+                <tr>
                     <td>@obj.Title</td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-outline-primary">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-outline-primary">Delete</a>
+                        <a hx-confirm="Are you sure you wish to delete your account?" hx-get="/Home/Delete/@obj.Id" hx-target="body" class="btn btn-outline-primary">Delete</a>
                     </td>
                 </tr>
             }
+
+            <tr>
+                <td colspan="2" >
+                    <div hx-get="/Home/Create" hx-target="#test_target" hx-swap="outerHTML" class="btn btn-primary">Add task</div>
+                    @* <a hx-get="/Home/Create" asp-controller="Home" asp-action="Create"  class="btn btn-primary">Add task</a> *@
+                </td>
+            </tr>
             
         </tbody>
     </table>
+
+    <div id="test_target">
+        <h1>Some text here</h1>
+    </div>

@@ -27,7 +27,8 @@ public class HomeController : Controller
 
     public IActionResult Create()
     {
-        return View();
+        return PartialView();
+        // return View();
     }
 
     [HttpPost]
@@ -39,7 +40,7 @@ public class HomeController : Controller
 
             return RedirectToAction("Index");
         }
-        return View(obj);
+        return PartialView(obj);
     }
 
     public IActionResult Edit(int? id)

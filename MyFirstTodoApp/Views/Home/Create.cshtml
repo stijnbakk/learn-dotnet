@@ -1,11 +1,15 @@
 ﻿@model Todo
-<h1 class="mb-3">Create task</h1>
 
-<form method="post">
-    <div class="mb-3">
-        <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" autofocus></input>
-        <span asp-validation-for="Title" class="text-danger"></span>
+    <div>
+        @* <h1>Hello world</h1> *@
+        <form hx-post="/Home/Create" hx-target="body">
+            <td>
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" autofocus></input>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Add task</button>
+            </td>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Add task</button>
-</form>
